@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOP - A Unique Cafe Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        loopBlue: '#468c89',
+                        loopBeige: '#e4dccb',
+                        loopGreen: '#9fc5c4',
+                        loopDark: '#2F2D2E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Bebas Neue', 'cursive'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            /* background-color: #e4dccb; */
+            background-color: #f1f9f9;
+            color: #2F2D2E;
+        }
+        
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 2px;
+        }
+        
+        .menu-item:hover .menu-desc {
+            max-height: 200px;
+            opacity: 1;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .typing-demo {
+            width: 22ch;
+            animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+        }
+            
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+        .price{
+            color: #579c97;
+        }
+    </style>
+</head>
+<body class="bg-loopBeige">
+    <!-- Navigation -->
+    <nav class="bg-loopBlue text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="logo text-3xl font-bold">
+                <span class="text-loopGreen">LOOP</span> CAFE
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-loopGreen transition">Home</a>
+                <a href="#menu" class="hover:text-loopGreen transition">Menu</a>
+                <a href="#games" class="hover:text-loopGreen transition">Games</a>
+                <a href="#about" class="hover:text-loopGreen transition">About</a>
+            </div>
+            <button class="md:hidden text-xl" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-loopBlue w-full px-4 py-2" id="mobile-menu">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="hover:text-loopGreen transition py-1">Home</a>
+                <a href="#menu" class="hover:text-loopGreen transition py-1">Menu</a>
+                <a href="#games" class="hover:text-loopGreen transition py-1">Games</a>
+                <a href="#about" class="hover:text-loopGreen transition py-1">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden">
+        <div class="container mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <span class="text-loopBlue">LOOP</span> <span class="text-loopGreen">CAFE</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-6 typing-demo">Where coffee meets creativity</p>
+                <p class="text-lg mb-8 text-loopDark">A unique space to enjoy specialty coffee, delicious food, and engaging games in a relaxed atmosphere.</p>
+                <div class="flex space-x-4">
+                    <a href="#menu" class="bg-loopGreen text-white px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition">View Menu</a>
+                    <a href="#games" class="border-2 border-loopBlue text-loopBlue px-6 py-3 rounded-full font-medium hover:bg-loopBlue hover:text-white transition">Play Games</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <div class="absolute inset-0 bg-loopBlue rounded-full opacity-20 floating" style="animation-delay: 0.2s;"></div>
+                    <div class="absolute inset-4 bg-loopGreen rounded-full opacity-20 floating" style="animation-delay: 0.4s;"></div>
+                    <div class="absolute inset-8 bg-loopBlue rounded-full opacity-20 floating" style="animation-delay: 0.6s;"></div>
+                    <!-- <img src="./logo.jpg" 
+                         alt="Coffee cup" 
+                         class="absolute inset-0 w-full h-full object-cover rounded-full shadow-xl floating"> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-loopBlue">Our Menu</h2>
+                <div class="w-20 h-1 bg-loopGreen mx-auto mb-4"></div>
+                <p class="text-lg text-loopDark max-w-2xl mx-auto">Handcrafted beverages and fresh meals made with locally-sourced ingredients</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Coffee -->
+                <div class="bg-loopBeige rounded-lg overflow-hidden shadow-md">
+                    <div class="bg-loopBlue text-white py-3 px-6">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fas fa-coffee mr-2"></i> Hot Drinks
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Hot Chocolate</h4>
+                                <span class="text price font-bold">20,000 sp</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Our signature espresso blend with notes of dark chocolate and caramel</p>
+                            </div>
+                        </div>
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Coffee</h4>
+                                <span class="text price font-bold">15,00 sp</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Slow-steeped for 18 hours for a smooth, less acidic flavor</p>
+                            </div>
+                        </div>
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Nescafe</h4>
+                                <span class="text price font-bold">10,000</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Premium ceremonial grade matcha with your choice of milk</p>
+                            </div>
+                        </div>
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Herbal Drinks</h4>
+                                <span class="text price font-bold">10,000 sp</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">شاي ، زهورات ، كمون وليمون ، بابونج</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Food -->
+                <div class="bg-loopBeige rounded-lg overflow-hidden shadow-md">
+                    <div class="bg-loopBlue text-white py-3 px-6">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fas fa-coffee mr-2"></i> Cold Drinks
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Milkshake</h4>
+                                <span class="text price font-bold">30,000 sp</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Strawberry Milkshake, Chocolate Milkshake</p>
+                            </div>
+                        </div>
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Soft Drinks</h4>
+                                <span class="text price font-bold">15,000 sp</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Pepsi, 7up, Fanta, Mountain Due</p>
+                            </div>
+                        </div>
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Ice-Drinks</h4>
+                                <span class="text price font-bold">20,000 sp</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Ice Coffee, Ice Tea, Ice Milo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="bg-loopBeige rounded-lg overflow-hidden shadow-md">
+                    <div class="bg-loopBlue text-white py-3 px-6">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fas fa-ice-cream mr-2"></i> Desserts
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Chocolate Cake</h4>
+                                <span class="text price font-bold">???</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Rich chocolate cake with ganache frosting</p>
+                            </div>
+                        </div>
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Cinnamon Roll</h4>
+                                <span class="text price font-bold">???</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Freshly baked with cream cheese frosting</p>
+                            </div>
+                        </div>
+                        <div class="menu-item mb-6 pb-4 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-lg">Cookie Platter</h4>
+                                <span class="text price font-bold">???</span>
+                            </div>
+                            <div class="menu-desc max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                                <p class="text-sm mt-2">Assortment of 4 freshly baked cookies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="py-20 bg-loopBlue text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Game Zone</h2>
+                <div class="w-20 h-1 bg-loopGreen mx-auto mb-4"></div>
+                <p class="text-lg max-w-2xl mx-auto">Enjoy our selection of board games and digital experiences while you sip your coffee</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Board Games -->
+                <div class="game-card bg-white text-loopDark rounded-lg overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-loopGreen flex items-center justify-center">
+                        <i class="fas fa-gamepad text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Games</h3>
+                        <p class="text-sm mb-4">Classic and modern games available for play</p>
+                        <ul class="text-xs space-y-1">
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> Billiard</li>
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> Playstation</li>
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> Ping Pong</li>
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> Jakaroo</li>
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> Chess & Checkers</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Digital Games -->
+                <div class="game-card bg-white text-loopDark rounded-lg overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-loopGreen flex items-center justify-center">
+                        <i class="fas fa-gamepad text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Loop Cinema</h3>
+                        <p class="text-sm mb-4">Watch your favourite movies with your friends</p>
+                        <ul class="text-xs space-y-1">
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> 4K Resolution</li>
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> All movies available</li>
+
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Weekly Tournaments -->
+                <div class="game-card bg-white text-loopDark rounded-lg overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-loopGreen flex items-center justify-center">
+                        <i class="fas fa-trophy text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Weekly Tournaments</h3>
+                        <p class="text-sm mb-4">Compete for prizes and bragging rights</p>
+                        <ul class="text-xs space-y-1">
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> Chess Tournament (Wednesdays)</li>
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> Trivia Night (Fridays)</li>
+                            <li class="flex items-center"><i class="fas fa-check text-loopGreen mr-2"></i> Puzzle Challenge (Sundays)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Simple Game Demo -->
+            <div class="mt-16 bg-white rounded-lg shadow-lg p-6 max-w-3xl mx-auto text-loopDark">
+                <h3 class="text-xl font-bold mb-4 text-center">Wifi Password? Play our Digital Game.</h3>
+                <div id="quiz-container" class="mb-6">
+                    <div id="question" class="font-medium mb-4">Loading questions...</div>
+                    <div id="options" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+                </div>
+                <div id="result" class="hidden text-center py-4 px-6 bg-loopBeige rounded-lg">
+                    <h4 class="font-bold text-lg mb-2">Your Score: <span id="score">0</span>/5</h4>
+                    <p id="result-text" class="mb-3"></p>
+                    <button id="restart-btn" class="bg-loopGreen text-white px-4 py-2 rounded hover:bg-opacity-90 transition">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-loopBlue">Our Story</h2>
+                <div class="w-20 h-1 bg-loopGreen mx-auto mb-4"></div>
+                <p class="text-lg text-loopDark max-w-2xl mx-auto">How LOOP became your favorite creative coffee space</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                    <h3 class="text-2xl font-bold mb-4 text-loopBlue">The Beginning</h3>
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae beatae soluta eius culpa deserunt at sapiente provident eos nihil, laboriosam perferendis similique quibusdam suscipit consectetur doloribus dolorem accusantium aspernatur est!</p>
+                    <p></p>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                             alt="Cafe interior" 
+                             class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-t from-loopDark to-transparent opacity-50"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <p class="text-sm">Our first location in town</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row-reverse items-center mb-16">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pl-10">
+                    <h3 class="text-2xl font-bold mb-4 text-loopBlue">Our Philosophy</h3>
+                    <p class="mb-4">At LOOP, we believe in the power of bringing people together over shared experiences. Our name reflects our commitment to creating a continuous cycle of:</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-loopGreen mr-2">✓</span>
+                            <span>Community connection through games and events</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-loopGreen mr-2">✓</span>
+                            <span>Sustainable sourcing of our coffee and ingredients</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-loopGreen mr-2">✓</span>
+                            <span>Continuous innovation in our menu and game offerings</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Coffee beans" 
+                             class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-t from-loopDark to-transparent opacity-50"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-loopBeige rounded-lg p-8 md:p-12 max-w-4xl mx-auto text-center">
+                <h3 class="text-2xl font-bold mb-4 text-loopBlue">Visit Us</h3>
+                <p class="mb-6">جرمانا - البلدية القديمة - جانب البنك العربي<br>
+                Open daily from 10am to 1am</p>
+                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-phone-alt text-loopGreen mr-2"></i>
+                        <span>(+963) 123-4567</span>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-envelope text-loopGreen mr-2"></i>
+                        <span>hello@loopcafe.com</span>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <i class="fab fa-instagram text-loopGreen mr-2"></i>
+                        <span>@loopcafe7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-loopDark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="logo text-3xl font-bold mb-6 md:mb-0">
+                    <span class="text-loopGreen">LOOP</span> CAFE
+                </div>
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="hover:text-loopGreen transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-loopGreen transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-loopGreen transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-loopGreen transition"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <div class="text-sm">
+                    &copy; 2025 LOOP Cafe. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Menu item hover effect
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const desc = item.querySelector('.menu-desc');
+                desc.style.maxHeight = '200px';
+                desc.style.opacity = '1';
+            });
+            item.addEventListener('mouseleave', () => {
+                const desc = item.querySelector('.menu-desc');
+                desc.style.maxHeight = '0';
+                desc.style.opacity = '0';
+            });
+        });
+        
+        // Coffee Quiz Game
+        const quizQuestions = [
+            {
+                
+                question: "When was LOOP CAFE founded?",
+                options: ["December 2024", "January 2025", "May 2025", "March 2025"],
+                answer: "May 2025"
+            },
+            {
+                question: "Which country is the largest producer of coffee in the world?",
+                options: ["Colombia", "Brazil", "Vietnam", "Ethiopia"],
+                answer: "Brazil"
+            },
+            {
+                question: "One of the following isn't in our cafe?",
+                options: ["Billiard", "PLaystation", "Cinema", "Ping Pong"],
+                answer: "Ping Pong"
+            },
+            {
+                question: "What is the ideal temperature for brewing coffee?",
+                options: ["160-170°F", "175-185°F", "195-205°F", "210-220°F"],
+                answer: "195-205°F"
+            },
+            {
+                question: "Which of these is NOT a type of coffee bean?",
+                options: ["Arabica", "Robusta", "Liberica", "Colombica"],
+                answer: "Colombica"
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        const quizContainer = document.getElementById('quiz-container');
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const resultElement = document.getElementById('result');
+        const scoreElement = document.getElementById('score');
+        const resultTextElement = document.getElementById('result-text');
+        const restartBtn = document.getElementById('restart-btn');
+        
+        function loadQuestion() {
+            const question = quizQuestions[currentQuestion];
+            questionElement.textContent = question.question;
+            
+            optionsElement.innerHTML = '';
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.className = 'bg-loopBeige hover:bg-loopBlue hover:text-white px-4 py-3 rounded transition text-left';
+                button.addEventListener('click', () => selectAnswer(option));
+                optionsElement.appendChild(button);
+            });
+        }
+        
+        function selectAnswer(selectedOption) {
+            const question = quizQuestions[currentQuestion];
+            if (selectedOption === question.answer) {
+                score++;
+            }
+            
+            currentQuestion++;
+            if (currentQuestion < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+        
+        function showResult() {
+            quizContainer.classList.add('hidden');
+            resultElement.classList.remove('hidden');
+            scoreElement.textContent = score;
+            
+            if (score === quizQuestions.length) {
+                resultTextElement.textContent = "Perfect! The Password is (00000000)";
+            } else if (score >= quizQuestions.length * 0.7) {
+                resultTextElement.textContent = "Great job! The Password is (00000000).";
+            } else if (score >= quizQuestions.length * 0.4) {
+                resultTextElement.textContent = "Not too much bad! The Password is (00000000).";
+            } else {
+                resultTextElement.textContent = "Keep learning about us! Try again to get the wifi password.";
+            }
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            quizContainer.classList.remove('hidden');
+            resultElement.classList.add('hidden');
+            loadQuestion();
+        }
+        
+        restartBtn.addEventListener('click', restartQuiz);
+        
+        // Initialize the quiz
+        loadQuestion();
+    </script>
+</body>
+</html>
